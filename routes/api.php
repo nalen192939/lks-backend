@@ -33,6 +33,7 @@ Route::apiResource('data', DataController::class);
 
 Route::get('/cover-image', function (Request $request) {
     $path = trim((string) $request->query('path', ''));
+    $path = str_replace('\\', '/', $path);
     $path = preg_replace('#^/?storage/#', '', $path);
     $path = ltrim($path, '/\\');
 
